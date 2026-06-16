@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UniSmartLMS - AI Library Management System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #0a0a1a, #1a1a3e);
+            color: white;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        h1 {
+            font-size: 2.5em;
+            background: linear-gradient(90deg, #ffc107, #00ff88);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+        .badge {
+            display: inline-block;
+            background: #00ff88;
+            color: #0a0a1a;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+        .agent-box {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid #00ff88;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: left;
+        }
+        .agent-box h2 {
+            color: #00ff88;
+            margin-top: 0;
+        }
+        .tech-badge {
+            display: inline-block;
+            background: #1a1a3e;
+            color: #ffc107;
+            padding: 5px 15px;
+            border-radius: 20px;
+            margin: 5px;
+            font-size: 0.9em;
+            border: 1px solid #ffc107;
+        }
+        .qr-section {
+            margin: 40px 0;
+            padding: 20px;
+            background: rgba(255,255,255,0.05);
+            border-radius: 15px;
+        }
+        .team {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+        .team-member {
+            background: rgba(255,255,255,0.05);
+            padding: 10px 20px;
+            border-radius: 10px;
+        }
+        footer {
+            margin-top: 40px;
+            padding: 20px;
+            border-top: 1px solid #333;
+            color: #888;
+        }
+        @media (max-width: 600px) {
+            h1 { font-size: 1.8em; }
+            .team { flex-direction: column; gap: 10px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Badge -->
+        <div class="badge">🏆 Three AI Agents – Zero External APIs – Pure C# Intelligence</div>
+
+        <!-- Title -->
+        <h1>University Library Management System</h1>
+        <h2 style="color: #ffc107;">UniSmartLMS</h2>
+        <p style="font-size: 1.2em; color: #aaa;">Agentic AI-Powered Smart Library with Voice-Activated Assistant</p>
+
+        <!-- Team -->
+        <div class="team">
+            <div class="team-member"><strong>Khizar Hayyat</strong> (2022-uam-2329) <br><span style="color: #00ff88; font-size:0.8em;">Team Leader</span></div>
+            <div class="team-member"><strong>Zeeshan Sikander</strong> (2022-uam-2334)</div>
+            <div class="team-member"><strong>Muhammad Tayyab</strong> (2022-uam-2301)</div>
+        </div>
+
+        <p><strong>Supervisor:</strong> Mr. M. Aziz Ur Rehman</p>
+        <p style="color: #888;">MNS-University of Agriculture, Multan</p>
+
+        <!-- AI Agents -->
+        <h2 style="color: #ffc107; margin-top: 40px;">🤖 Three Innovative AI Agents</h2>
+
+        <div class="agent-box">
+            <h2>📚 Agent 1: Smart Library AI (RAG Engine)</h2>
+            <ul>
+                <li>Self-contained RAG engine with Hybrid Search</li>
+                <li>Formula: (Semantic × 0.35) + (BM25 × 0.30) + (Keyword × 0.25) + (Structure × 0.10)</li>
+                <li>Upload PDF/DOCX/PPTX/TXT → Ask Questions → Get Answers with Sources & Confidence Scores</li>
+                <li>384-dimension custom embeddings (no external APIs)</li>
+            </ul>
+        </div>
+
+        <div class="agent-box">
+            <h2>🎤 Agent 2: AI Avatar (Action Agent)</h2>
+            <ul>
+                <li>Voice-Controlled Action Agent with 70+ Database-Driven Intents</li>
+                <li>Intent Detection Flow: Voice → Intent → Role Check → Redirect</li>
+                <li>"create university" → /University/Create (Admin) | "issue book" → /Issuance/Create (Librarian)</li>
+                <li>Speech-to-Text + Text-to-Speech (Web Speech API)</li>
+            </ul>
+        </div>
+
+        <div class="agent-box">
+            <h2>📊 Agent 3: Research Assistant</h2>
+            <ul>
+                <li>AI Paper Analyzer for academic research papers</li>
+                <li>Automatic Section Detection: Abstract → Methodology → Results → Conclusion → References</li>
+                <li>Extract key findings, citations, and research gaps</li>
+                <li>Compare methodologies across multiple papers</li>
+            </ul>
+        </div>
+
+        <!-- Tech Stack -->
+        <h2 style="color: #ffc107; margin-top: 40px;">🛠️ Technologies & Techniques</h2>
+        <div>
+            <span class="tech-badge">C#</span>
+            <span class="tech-badge">ASP.NET Core 8</span>
+            <span class="tech-badge">SQL Server</span>
+            <span class="tech-badge">Hybrid Search</span>
+            <span class="tech-badge">RAG</span>
+            <span class="tech-badge">Web Speech API</span>
+            <span class="tech-badge">Dapper</span>
+            <span class="tech-badge">Bootstrap 5</span>
+            <span class="tech-badge">Git</span>
+            <span class="tech-badge">GitHub</span>
+        </div>
+        <div style="margin-top: 10px;">
+            <span class="tech-badge" style="border-color:#00ff88; color:#00ff88;">Generic Repository Pattern</span>
+            <span class="tech-badge" style="border-color:#00ff88; color:#00ff88;">N-Tier Architecture</span>
+            <span class="tech-badge" style="border-color:#00ff88; color:#00ff88;">61 Tables (3NF)</span>
+            <span class="tech-badge" style="border-color:#00ff88; color:#00ff88;">Stored Procedure Security</span>
+        </div>
+
+        <!-- Key Results -->
+        <h2 style="color: #ffc107; margin-top: 40px;">📊 Key Results</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px,1fr)); gap: 15px;">
+            <div style="background:rgba(0,255,136,0.1); padding:15px; border-radius:10px;">✅ 61 Tables</div>
+            <div style="background:rgba(0,255,136,0.1); padding:15px; border-radius:10px;">✅ 51 Controllers</div>
+            <div style="background:rgba(0,255,136,0.1); padding:15px; border-radius:10px;">✅ 99.5% Pass Rate</div>
+            <div style="background:rgba(0,255,136,0.1); padding:15px; border-radius:10px;">✅ 95% Satisfaction</div>
+            <div style="background:rgba(0,255,136,0.1); padding:15px; border-radius:10px;">✅ 70+ AI Intents</div>
+            <div style="background:rgba(0,255,136,0.1); padding:15px; border-radius:10px;">✅ 1.2-1.8s Load</div>
+        </div>
+
+        <!-- QR Code Section -->
+        <div class="qr-section">
+            <h2 style="color: #ffc107;">📱 Scan to View Project</h2>
+            <p style="color: #aaa;">After hosting this page, generate a QR code using the URL below and add it to your poster</p>
+            <p style="color: #00ff88; word-break: break-all; font-size: 0.9em;">
+                https://YOUR_USERNAME.github.io/unismartlms-showcase/
+            </p>
+            <p style="color: #888; font-size: 0.8em; margin-top: 20px;">
+                💡 Tip: Replace YOUR_USERNAME with your actual GitHub username
+            </p>
+        </div>
+
+        <footer>
+            <p>© 2026 UniSmartLMS - MNS-University of Agriculture, Multan</p>
+        </footer>
+    </div>
+</body>
+</html>
