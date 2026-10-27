@@ -1,300 +1,611 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>UniSmartLMS - AI Library Management System</title>
+
+    <meta name="description" content="UniSmartLMS - An AI-powered university library management system built with C#, ASP.NET Core MVC, SQL Server, document-based question answering, and a voice assistant.">
+    <meta name="author" content="Khizar Hayyat">
+
+    <title>UniSmartLMS | AI-Powered Smart Library</title>
+
     <style>
+        :root {
+            --background: #0a0a1a;
+            --surface: rgba(255, 255, 255, 0.05);
+            --green: #00ff88;
+            --yellow: #ffc107;
+            --muted: #aaa;
+            --border: #303047;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: Arial, sans-serif;
+            font-family: Arial, Helvetica, sans-serif;
             background: linear-gradient(135deg, #0a0a1a, #1a1a3e);
-            color: white;
+            color: #fff;
             margin: 0;
             padding: 20px;
             text-align: center;
+            line-height: 1.6;
         }
+
+        a {
+            color: inherit;
+        }
+
         .container {
             max-width: 1100px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 30px 20px;
         }
+
         h1 {
             font-size: 2.8em;
-            background: linear-gradient(90deg, #ffc107, #00ff88);
+            line-height: 1.2;
+            background: linear-gradient(90deg, var(--yellow), var(--green));
             -webkit-background-clip: text;
+            background-clip: text;
             -webkit-text-fill-color: transparent;
             display: inline-block;
         }
+
+        h2 {
+            color: var(--yellow);
+        }
+
         .badge {
             display: inline-block;
-            background: #00ff88;
+            background: var(--green);
             color: #0a0a1a;
-            padding: 8px 25px;
+            padding: 8px 20px;
             border-radius: 30px;
             font-weight: bold;
             margin: 10px 0;
-            font-size: 1.1em;
+            font-size: 0.95em;
         }
-        .agent-box {
-            background: rgba(255,255,255,0.05);
-            border: 1px solid #00ff88;
-            border-radius: 15px;
-            padding: 25px;
-            margin: 25px 0;
-            text-align: left;
+
+        .subtitle {
+            font-size: 1.15em;
+            color: var(--muted);
+            max-width: 800px;
+            margin: 15px auto;
         }
-        .agent-box h2 {
-            color: #00ff88;
-            margin-top: 0;
-        }
-        .tech-badge {
-            display: inline-block;
-            background: #1a1a3e;
-            color: #ffc107;
-            padding: 5px 15px;
-            border-radius: 20px;
-            margin: 5px;
-            font-size: 0.9em;
-            border: 1px solid #ffc107;
-        }
-        .screenshot-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 20px;
-            margin: 30px 0;
-        }
-        .screenshot-card {
-            background: rgba(255,255,255,0.05);
-            border-radius: 12px;
-            padding: 15px;
-            border: 1px solid #333;
-            transition: transform 0.3s;
-        }
-        .screenshot-card:hover {
-            transform: scale(1.02);
-            border-color: #00ff88;
-        }
-        .screenshot-card img {
-            width: 100%;
-            border-radius: 8px;
-            border: 1px solid #444;
-        }
-        .screenshot-card p {
-            margin: 10px 0 0 0;
-            color: #aaa;
-            font-size: 0.9em;
-        }
+
         .team {
             display: flex;
             justify-content: center;
-            gap: 30px;
+            gap: 18px;
             flex-wrap: wrap;
-            margin: 20px 0;
+            margin: 28px 0 18px;
         }
+
         .team-member {
-            background: rgba(255,255,255,0.05);
-            padding: 10px 25px;
-            border-radius: 10px;
+            background: var(--surface);
+            border: 1px solid var(--border);
+            padding: 14px 22px;
+            border-radius: 12px;
+            min-width: 200px;
         }
-        .qr-section {
-            margin: 40px 0;
-            padding: 30px;
-            background: rgba(255,255,255,0.05);
-            border-radius: 15px;
-            border: 1px dashed #ffc107;
+
+        .team-member strong {
+            font-size: 1.05em;
         }
-        footer {
-            margin-top: 40px;
-            padding: 20px;
-            border-top: 1px solid #333;
-            color: #888;
+
+        .team-role {
+            display: block;
+            color: var(--green);
+            font-size: 0.85em;
+            margin-top: 4px;
         }
-        .stats-grid {
+
+        .university {
+            color: var(--muted);
+        }
+
+        /* Project links */
+        .project-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin: 28px auto 35px;
+        }
+
+        .project-link {
+            display: inline-block;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 12px 20px;
+            border-radius: 9px;
+            border: 1px solid var(--green);
+            color: var(--green);
+            background: rgba(0, 255, 136, 0.06);
+            transition: transform 0.2s, background 0.2s;
+        }
+
+        .project-link.primary {
+            background: var(--green);
+            color: #0a0a1a;
+        }
+
+        .project-link:hover {
+            transform: translateY(-3px);
+            background: var(--green);
+            color: #0a0a1a;
+        }
+
+        .section-title {
+            margin-top: 55px;
+            margin-bottom: 20px;
+        }
+
+        .screenshot-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 15px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+
+        .screenshot-card {
+            background: var(--surface);
+            border-radius: 12px;
+            padding: 14px;
+            border: 1px solid var(--border);
+            transition: transform 0.2s, border-color 0.2s;
+        }
+
+        .screenshot-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--green);
+        }
+
+        .screenshot-card img {
+            display: block;
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            border: 1px solid #444;
+        }
+
+        .screenshot-card p {
+            margin: 10px 0 0;
+            color: #ddd;
+            font-size: 0.92em;
+        }
+
+        .agent-box {
+            background: var(--surface);
+            border: 1px solid rgba(0, 255, 136, 0.45);
+            border-radius: 15px;
+            padding: 22px 25px;
+            margin: 20px 0;
+            text-align: left;
+        }
+
+        .agent-box h3 {
+            color: var(--green);
+            margin-top: 0;
+        }
+
+        .agent-box li {
+            margin: 8px 0;
+            color: #ddd;
+        }
+
+        .tech-stack {
             margin: 20px 0;
         }
-        .stat-item {
-            background: rgba(0,255,136,0.1);
-            padding: 15px;
-            border-radius: 10px;
-            border: 1px solid rgba(0,255,136,0.2);
+
+        .tech-badge {
+            display: inline-block;
+            background: #1a1a3e;
+            color: var(--yellow);
+            padding: 6px 14px;
+            border-radius: 20px;
+            margin: 5px;
+            font-size: 0.9em;
+            border: 1px solid #5b4b1a;
         }
+
+        .info-note {
+            color: var(--muted);
+            font-size: 0.9em;
+            max-width: 850px;
+            margin: 15px auto;
+        }
+
+        .qr-section {
+            margin: 45px 0;
+            padding: 28px;
+            background: var(--surface);
+            border-radius: 15px;
+            border: 1px dashed var(--yellow);
+        }
+
+        .qr-url {
+            color: var(--green);
+            overflow-wrap: anywhere;
+        }
+
+        footer {
+            margin-top: 45px;
+            padding: 22px;
+            border-top: 1px solid var(--border);
+            color: #888;
+            font-size: 0.9em;
+        }
+
         @media (max-width: 600px) {
-            h1 { font-size: 1.8em; }
-            .team { flex-direction: column; gap: 10px; }
+            body {
+                padding: 10px;
+            }
+
+            .container {
+                padding: 25px 8px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            .team {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .project-links {
+                flex-direction: column;
+            }
+
+            .project-link {
+                width: 100%;
+            }
+
+            .agent-box {
+                padding: 18px;
+            }
         }
     </style>
 </head>
+
 <body>
-    <div class="container">
-        <!-- Badge -->
-        <div class="badge">🏆 Three AI Agents – Zero External APIs – Pure C# Intelligence</div>
+    <main class="container">
 
-        <!-- Title -->
-        <h1>University Library Management System</h1>
-        <h2 style="color: #ffc107;">UniSmartLMS</h2>
-        <p style="font-size: 1.2em; color: #aaa;">Agentic AI-Powered Smart Library with Voice-Activated Assistant</p>
+        <!-- Project Introduction -->
+        <header>
+            <div class="badge">🎓 Final Year Project · 2025–2026</div>
 
-        <!-- Team -->
-        <div class="team">
-            <div class="team-member"><strong>Khizar Hayyat</strong> (2022-uam-2329) <br><span style="color: #00ff88; font-size:0.8em;">Team Leader</span></div>
-            <div class="team-member"><strong>Zeeshan Sikander</strong> (2022-uam-2334)</div>
-            <div class="team-member"><strong>Muhammad Tayyab</strong> (2022-uam-2301)</div>
-        </div>
+            <h1>University Library Management System</h1>
 
-        <p><strong>Supervisor:</strong> Mr. M. Aziz Ur Rehman</p>
-        <p style="color: #888;">MNS-University of Agriculture, Multan</p>
+            <h2 style="margin-top: 0;">UniSmartLMS</h2>
 
-        <!-- ===== SCREENSHOTS SECTION ===== -->
-        <h2 style="color: #ffc107; margin-top: 50px;">📸 Project Screenshots</h2>
-        <div class="screenshot-grid">
+            <p class="subtitle">
+                An AI-Powered Smart Library with Document-Based Question Answering,
+                Voice Assistance, and Role-Based Library Management.
+            </p>
+        </header>
 
-            <div class="screenshot-card">
-                <img src="homepage.png" alt="Homepage">
-                <p>🏠 Homepage</p>
+        <!-- Project Team -->
+        <section aria-label="Project team">
+            <div class="team">
+                <div class="team-member">
+                    <strong>Khizar Hayyat</strong>
+                    <span class="team-role">Team Leader</span>
+                </div>
+
+                <div class="team-member">
+                    <strong>Zeeshan Sikander</strong>
+                    <span class="team-role">Team Member</span>
+                </div>
+
+                <div class="team-member">
+                    <strong>Muhammad Tayyab</strong>
+                    <span class="team-role">Team Member</span>
+                </div>
             </div>
 
-            <div class="screenshot-card">
-                <img src="student-dashboard.png" alt="Student Dashboard">
-                <p>👨‍🎓 Student Dashboard</p>
+            <p><strong>Project Supervisor:</strong> Mr. M. Aziz Ur Rehman</p>
+
+            <p class="university">
+                MNS University of Agriculture, Multan, Pakistan
+            </p>
+        </section>
+
+        <!-- Professional Project Links -->
+        <nav class="project-links" aria-label="Project resources">
+            <a
+                class="project-link primary"
+                href="https://github.com/Khizar7553/UniSmartLMS"
+                target="_blank"
+                rel="noopener noreferrer">
+                💻 View Source Code
+            </a>
+
+            <a
+                class="project-link"
+                href="https://github.com/Khizar7553/UniSmartLMS#readme"
+                target="_blank"
+                rel="noopener noreferrer">
+                📄 Read Documentation
+            </a>
+
+            <a
+                class="project-link"
+                href="https://khizar7553.github.io/unismartlms-showcase/">
+                🌐 Project Showcase
+            </a>
+        </nav>
+
+        <p class="info-note">
+            Explore the source code, read the technical documentation,
+            or browse the project interface and screenshots below.
+        </p>
+
+        <!-- Screenshots -->
+        <section id="screenshots">
+            <h2 class="section-title">📸 Project Screenshots</h2>
+
+            <div class="screenshot-grid">
+
+                <div class="screenshot-card">
+                    <img src="homepage.png" alt="UniSmartLMS homepage" loading="lazy">
+                    <p>🏠 Homepage</p>
+                </div>
+
+                <div class="screenshot-card">
+                    <img src="student-dashboard.png" alt="Student dashboard" loading="lazy">
+                    <p>👨‍🎓 Student Dashboard</p>
+                </div>
+
+                <div class="screenshot-card">
+                    <img src="librarian-dashboard.png" alt="Librarian dashboard" loading="lazy">
+                    <p>📚 Librarian Dashboard</p>
+                </div>
+
+                <div class="screenshot-card">
+                    <img src="admin-dashboard.png" alt="Administrator dashboard" loading="lazy">
+                    <p>👑 Admin Dashboard</p>
+                </div>
+
+                <div class="screenshot-card">
+                    <img src="ai-chat.png" alt="Document question answering interface" loading="lazy">
+                    <p>🤖 Smart Library AI Chat</p>
+                </div>
+
+                <div class="screenshot-card">
+                    <img src="avatar.png" alt="Voice assistant interface" loading="lazy">
+                    <p>🎤 Voice Assistant</p>
+                </div>
+
+                <div class="screenshot-card">
+                    <img src="research-assistant.png" alt="Research assistant interface" loading="lazy">
+                    <p>📊 Research Assistant Prototype</p>
+                </div>
+
+                <div class="screenshot-card">
+                    <img src="borrow-request.png" alt="Book borrowing request interface" loading="lazy">
+                    <p>📋 Borrow Request Management</p>
+                </div>
+
+                <div class="screenshot-card">
+                    <img src="role-assignment.png" alt="User role assignment interface" loading="lazy">
+                    <p>🔑 Role Assignment</p>
+                </div>
+
+                <div class="screenshot-card">
+                    <img src="user-management.png" alt="User management interface" loading="lazy">
+                    <p>👥 User Management</p>
+                </div>
+
+                <div class="screenshot-card">
+                    <img src="password-management.png" alt="Password management interface" loading="lazy">
+                    <p>🔐 Password Management</p>
+                </div>
+
+                <div class="screenshot-card">
+                    <img src="login.png" alt="Login page" loading="lazy">
+                    <p>🔒 Login Page</p>
+                </div>
+
+                <div class="screenshot-card">
+                    <img src="signup.png" alt="Registration page" loading="lazy">
+                    <p>📝 Signup / Registration</p>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- AI and Intelligent Features -->
+        <section id="features">
+            <h2 class="section-title">🤖 AI-Assisted Features</h2>
+
+            <div class="agent-box">
+                <h3>📚 1. Smart Library AI — Document Retrieval</h3>
+
+                <ul>
+                    <li>
+                        Processes supported uploaded documents for
+                        document-based question answering.
+                    </li>
+                    <li>
+                        Divides document text into smaller chunks for retrieval.
+                    </li>
+                    <li>
+                        Uses custom 384-dimensional character-trigram vectors
+                        and cosine similarity to compare text representations.
+                    </li>
+                    <li>
+                        Retrieves relevant document content to support
+                        the question-answering workflow.
+                    </li>
+                </ul>
+
+                <p class="info-note">
+                    The current vector-generation implementation uses
+                    character-trigram hashing rather than a pretrained
+                    semantic embedding model.
+                </p>
             </div>
 
-            <div class="screenshot-card">
-                <img src="librarian-dashboard.png" alt="Librarian Dashboard">
-                <p>📚 Librarian Dashboard</p>
+            <div class="agent-box">
+                <h3>🎤 2. Voice Assistant</h3>
+
+                <ul>
+                    <li>
+                        Supports speech input through browser speech-recognition
+                        functionality where available.
+                    </li>
+                    <li>
+                        Converts recognized speech into text for processing.
+                    </li>
+                    <li>
+                        Uses browser text-to-speech functionality for spoken output.
+                    </li>
+                    <li>
+                        Supports voice-driven interaction and navigation
+                        for implemented commands.
+                    </li>
+                </ul>
             </div>
 
-            <div class="screenshot-card">
-                <img src="admin-dashboard.png" alt="Admin Dashboard">
-                <p>👑 Admin Dashboard</p>
+            <div class="agent-box">
+                <h3>📊 3. Research Assistant</h3>
+
+                <ul>
+                    <li>
+                        Provides an experimental interface for academic
+                        research assistance.
+                    </li>
+                    <li>
+                        Explores document analysis and research-related tasks.
+                    </li>
+                    <li>
+                        Offers a foundation for future improvements in
+                        research-paper processing and assistance.
+                    </li>
+                </ul>
+
+                <p class="info-note">
+                    This component is experimental and may require further
+                    development for improved reliability and accuracy.
+                </p>
+            </div>
+        </section>
+
+        <!-- Library Management -->
+        <section id="library-management">
+            <h2 class="section-title">📚 Library Management Features</h2>
+
+            <div class="agent-box">
+                <ul>
+                    <li>Book and library record management.</li>
+                    <li>Borrowing request workflows.</li>
+                    <li>Separate interfaces for administrators, librarians, and students.</li>
+                    <li>User management and role assignment.</li>
+                    <li>Authentication using ASP.NET Core Identity.</li>
+                    <li>Document upload and retrieval functionality.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Technology Stack -->
+        <section id="technology">
+            <h2 class="section-title">🛠️ Technologies & Tools</h2>
+
+            <div class="tech-stack">
+                <span class="tech-badge">C#</span>
+                <span class="tech-badge">ASP.NET Core MVC</span>
+                <span class="tech-badge">.NET 10</span>
+                <span class="tech-badge">SQL Server</span>
+                <span class="tech-badge">Entity Framework Core</span>
+                <span class="tech-badge">Dapper</span>
+                <span class="tech-badge">ASP.NET Core Identity</span>
+                <span class="tech-badge">HTML5</span>
+                <span class="tech-badge">CSS3</span>
+                <span class="tech-badge">JavaScript</span>
+                <span class="tech-badge">Razor Views</span>
+                <span class="tech-badge">Document Processing</span>
+                <span class="tech-badge">Cosine Similarity</span>
+                <span class="tech-badge">RAG-Style Retrieval</span>
+                <span class="tech-badge">Web Speech APIs</span>
+                <span class="tech-badge">Git</span>
+                <span class="tech-badge">GitHub</span>
             </div>
 
-            <div class="screenshot-card">
-                <img src="ai-chat.png" alt="Smart Library AI">
-                <p>🤖 Smart Library AI Chat</p>
-            </div>
+            <p class="info-note">
+                The repository's project file lists additional document-processing
+                and machine-learning-related dependencies. Actual usage varies
+                by component.
+            </p>
+        </section>
 
-            <div class="screenshot-card">
-                <img src="avatar.png" alt="AI Avatar">
-                <p>🎤 AI Avatar Voice Assistant</p>
-            </div>
+        <!-- QR / Project Access -->
+        <section class="qr-section">
+            <h2>📱 Explore the Full Project</h2>
 
-<div class="screenshot-card">
-    <img src="research-assistant.png" alt="Research Assistant">
-    <p>📊 Research Assistant - Paper Analysis</p>
-</div>
+            <p>
+                Visit the online showcase to explore screenshots and
+                learn more about UniSmartLMS.
+            </p>
 
-<div class="screenshot-card">
-    <img src="borrow-request.png" alt="Borrow Request">
-    <p>📋 Borrow Request Management</p>
-</div>
+            <p>
+                <a
+                    class="project-link primary"
+                    href="https://khizar7553.github.io/unismartlms-showcase/">
+                    Open Project Showcase
+                </a>
+            </p>
 
-<div class="screenshot-card">
-    <img src="role-assignment.png" alt="Role Assignment">
-    <p>👑 Admin - Role Assignment</p>
-</div>
-
-<div class="screenshot-card">
-    <img src="user-management.png" alt="User Management">
-    <p>👥 User Management</p>
-</div>
-
-<div class="screenshot-card">
-    <img src="password-management.png" alt="Password Management">
-    <p>🔑 Password Management</p>
-</div>
-
-<div class="screenshot-card">
-    <img src="login.png" alt="Login Page">
-    <p>🔐 Login Page</p>
-</div>
-
-<div class="screenshot-card">
-    <img src="signup.png" alt="Signup Page">
-    <p>📝 Signup / Register Page</p>
-</div>
-
-        </div>
-
-        <!-- AI Agents -->
-        <h2 style="color: #ffc107; margin-top: 50px;">🤖 Three Innovative AI Agents</h2>
-
-        <div class="agent-box">
-            <h2>📚 Agent 1: Smart Library AI (RAG Engine)</h2>
-            <ul>
-                <li>Self-contained RAG engine with Hybrid Search</li>
-                <li>Formula: (Semantic × 0.35) + (BM25 × 0.30) + (Keyword × 0.25) + (Structure × 0.10)</li>
-                <li>Upload PDF/DOCX/PPTX/TXT → Ask Questions → Get Answers with Sources & Confidence Scores</li>
-                <li>384-dimension custom embeddings (no external APIs)</li>
-            </ul>
-        </div>
-
-        <div class="agent-box">
-            <h2>🎤 Agent 2: AI Avatar (Action Agent)</h2>
-            <ul>
-                <li>Voice-Controlled Action Agent with 70+ Database-Driven Intents</li>
-                <li>Intent Detection Flow: Voice → Intent → Role Check → Redirect</li>
-                <li>"create university" → /University/Create (Admin) | "issue book" → /Issuance/Create (Librarian)</li>
-                <li>Speech-to-Text + Text-to-Speech (Web Speech API)</li>
-            </ul>
-        </div>
-
-        <div class="agent-box">
-            <h2>📊 Agent 3: Research Assistant</h2>
-            <ul>
-                <li>AI Paper Analyzer for academic research papers</li>
-                <li>Automatic Section Detection: Abstract → Methodology → Results → Conclusion → References</li>
-                <li>Extract key findings, citations, and research gaps</li>
-                <li>Compare methodologies across multiple papers</li>
-            </ul>
-        </div>
-
-        <!-- Tech Stack -->
-        <h2 style="color: #ffc107; margin-top: 50px;">🛠️ Technologies & Techniques</h2>
-        <div>
-            <span class="tech-badge">C#</span>
-            <span class="tech-badge">ASP.NET Core 8</span>
-            <span class="tech-badge">SQL Server</span>
-            <span class="tech-badge">Hybrid Search</span>
-            <span class="tech-badge">RAG</span>
-            <span class="tech-badge">Web Speech API</span>
-            <span class="tech-badge">Dapper</span>
-            <span class="tech-badge">Bootstrap 5</span>
-            <span class="tech-badge">Git</span>
-            <span class="tech-badge">GitHub</span>
-        </div>
-        <div style="margin-top: 10px;">
-            <span class="tech-badge" style="border-color:#00ff88; color:#00ff88;">Generic Repository Pattern</span>
-            <span class="tech-badge" style="border-color:#00ff88; color:#00ff88;">N-Tier Architecture</span>
-            <span class="tech-badge" style="border-color:#00ff88; color:#00ff88;">61 Tables (3NF)</span>
-            <span class="tech-badge" style="border-color:#00ff88; color:#00ff88;">Stored Procedure Security</span>
-        </div>
-
-        <!-- Key Results -->
-        <h2 style="color: #ffc107; margin-top: 50px;">📊 Key Results</h2>
-        <div class="stats-grid">
-            <div class="stat-item">✅ 61 Tables</div>
-            <div class="stat-item">✅ 51 Controllers</div>
-            <div class="stat-item">✅ 99.5% Pass Rate</div>
-            <div class="stat-item">✅ 95% Satisfaction</div>
-            <div class="stat-item">✅ 70+ AI Intents</div>
-            <div class="stat-item">✅ 1.2-1.8s Load</div>
-        </div>
-
-        <!-- QR Code Section -->
-        <div class="qr-section">
-            <h2 style="color: #ffc107;">📱 Scan to View Full Project</h2>
-            <p style="color: #aaa;">Add your QR code here to make your poster interactive</p>
-            <p style="color: #00ff88; word-break: break-all; font-size: 0.9em;">
+            <p class="qr-url">
                 https://khizar7553.github.io/unismartlms-showcase/
             </p>
-        </div>
 
+            <p class="info-note">
+                To make this section scannable, add a QR-code image that
+                points to the showcase URL.
+            </p>
+        </section>
+
+        <!-- Footer -->
         <footer>
-            <p>© 2026 UniSmartLMS - MNS-University of Agriculture, Multan</p>
+            <p>
+                <strong>UniSmartLMS</strong> · Final Year Project · 2025–2026
+            </p>
+
+            <p>
+                MNS University of Agriculture, Multan, Pakistan
+            </p>
+
+            <p>
+                Developed by the UniSmartLMS project team.
+            </p>
+
+            <p>
+                <a
+                    href="https://github.com/Khizar7553/UniSmartLMS"
+                    target="_blank"
+                    rel="noopener noreferrer">
+                    GitHub Repository
+                </a>
+                &nbsp;|&nbsp;
+                <a
+                    href="https://linkedin.com/in/khizar-hayyat-9977433a9/"
+                    target="_blank"
+                    rel="noopener noreferrer">
+                    Team Leader's LinkedIn
+                </a>
+            </p>
         </footer>
-    </div>
+
+    </main>
 </body>
 </html>
